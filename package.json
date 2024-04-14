@@ -1,0 +1,22 @@
+{
+  "name": "globular-marauders-planet-batch-job",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx tsc && node ./dist/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "A batch job to pre-generate planets for performance reasons",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^7.9.0",
+    "@pickledeggs123/globular-marauders-game": "^0.2.188",
+    "@pickledeggs123/globular-marauders-generator": "^0.1.43",
+    "@prisma/client": "^5.12.1",
+    "prisma": "^5.12.1"
+  }
+}
