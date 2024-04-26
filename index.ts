@@ -33,11 +33,12 @@ const {Storage} = require("@google-cloud/storage");
     // });
 
     // generate game meshes
+    const gameData = generatePlanet(2, seed, true);
     const {
         meshes,
         spawnPoints,
         buildings,
-    } = generatePlanet(2, seed, true);
+    } = gameData;
 
     // upload to google cloud
     let previewUrl: string = "";
