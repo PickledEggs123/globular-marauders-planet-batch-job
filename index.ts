@@ -1,7 +1,4 @@
 import {generatePlanet} from "@pickledeggs123/globular-marauders-generator/dist/helpers";
-import fs from "fs";
-import path from "path";
-import exec from "child_process";
 
 const {PrismaClient} = require("@prisma/client");
 const {Storage} = require("@google-cloud/storage");
@@ -36,7 +33,11 @@ const {Storage} = require("@google-cloud/storage");
     // });
 
     // generate game meshes
-    const meshes = generatePlanet(2, seed, true).meshes;
+    const {
+        meshes,
+        spawnPoints,
+        buildings,
+    } = generatePlanet(2, seed, true);
 
     // upload to google cloud
     let previewUrl: string = "";
@@ -45,7 +46,11 @@ const {Storage} = require("@google-cloud/storage");
         const storage = new Storage();
         const bucketName = "globular-marauders-planets";
         await storage.bucket(bucketName).file(previewFile).save(JSON.stringify(mesh), {gzip: true});
-        await storage.bucket(bucketName).file(gameFile).save(JSON.stringify(meshes), {gzip: true});
+        await storage.bucket(bucketName).file(gameFile).save(JSON.stringify({
+            meshes,
+            spawnPoints,
+            buildings,
+        }), {gzip: true});
         previewUrl = storage.bucket(bucketName).file(previewFile).publicUrl();
         gameUrl = storage.bucket(bucketName).file(gameFile).publicUrl();
         console.log(previewUrl);
