@@ -15,7 +15,7 @@
   "dependencies": {
     "@google-cloud/storage": "^7.9.0",
     "@pickledeggs123/globular-marauders-game": "^0.2.193",
-    "@pickledeggs123/globular-marauders-generator": "^0.1.59",
+    "@pickledeggs123/globular-marauders-generator": "^0.1.61",
     "@prisma/client": "^5.12.1",
     "prisma": "^5.12.1"
   }
