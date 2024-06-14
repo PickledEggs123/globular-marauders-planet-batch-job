@@ -78,5 +78,5 @@ const {Storage} = require("@google-cloud/storage");
         await prisma.$disconnect();
         process.exit(1);
     }
-    process.exit();
+    process.exit(0);
 })();
